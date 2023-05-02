@@ -1,10 +1,40 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../../../AuthProviders/AuthProvider';
+import { FaSignOutAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+    const { user , logOut } = useContext(UserContext);
 
-    const { user } = useContext(UserContext)
+    const handleLogOut = ()=>{
+        logOut()
+        .then(()=>{
+            toast.success('Log Out Successful!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        })
+        .catch((error)=>{
+            toast.error(error.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        })
+
+    }
     return (
         <nav className='myContainer'>
             <div className="flex justify-between items-center  bg-base-100">
@@ -26,6 +56,14 @@ const Header = () => {
                             <li className='font-medium'>
                                 <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : 'default')}>About</NavLink>
                             </li>
+
+                            {
+                            user ? <li className='font-medium'>
+                                <button className='logOutBtn' onClick={handleLogOut}>Log out <FaSignOutAlt /></button>
+                            </li> : ""
+                        }
+                        
+
                             {/* <li>
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-full rounded-full">
@@ -58,6 +96,11 @@ const Header = () => {
                         <li className='font-medium'>
                             <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : 'default')}>About</NavLink>
                         </li>
+                        {
+                            user ? <li className='font-medium'>
+                                <button className='logOutBtn' onClick={handleLogOut}>Log out <FaSignOutAlt /></button>
+                            </li> : ""
+                        }
                     </ul>
                 </div>
 
@@ -68,9 +111,15 @@ const Header = () => {
                                 <div className="w-10 rounded-full">
                                     <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                                 </div>
-                            </label> : 
+
+
+                                <div className='absolute hover:top-5 mt-8 opacity-0 hover:opacity-100'>
+                                    <p className='bg-accent p-3'>{user.displayName}</p>
+                                </div>
+
+                            </label> :
                             <Link to="/login">
-                            <button className='myBtn'>Login</button>
+                                <button className='myBtn'>Login</button>
                             </Link>
                     }
 

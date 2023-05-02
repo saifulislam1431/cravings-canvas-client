@@ -20,3 +20,7 @@
 .myBtn{
     @apply px-4 py-1 bg-secondary border border-secondary hover:bg-accent hover:border-accent text-white font-medium capitalize rounded-md
 }
+
+.logOutBtn{
+    @apply px-4 py-3 lg:py-0 bg-transparent border border-secondary hover:bg-accent hover:border-accent text-secondary hover:text-white font-medium capitalize rounded-md
+}
