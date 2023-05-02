@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 const Home = () => {
     const form = useRef();
     const allChef = useLoaderData();
-    console.log(allChef);
+    // console.log(allChef);
 
     const sendEmail = (e) => {
         e.preventDefault();
