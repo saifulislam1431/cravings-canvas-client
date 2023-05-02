@@ -1,0 +1,17 @@
+/* .recipe-img{
+  width: 70%;
+  height: 77%;
+}
+
+@media screen and (max-width: 600px) {
+    .recipe-img{
+        height: 22%;
+      }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .recipe-img{
+        width: 73%;
+  height: 65%;
+      }
+} */

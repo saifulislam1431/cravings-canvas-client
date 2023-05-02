@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../AuthProviders/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import AllChefs from '../AllChefs/AllChefs';
+import "./Home.css"
+import Lottie from "lottie-react";
+import contactMotion from "../../assets/96060-tta-contact-us.json"
 
 const Home = () => {
     const allChef = useLoaderData();
@@ -57,18 +60,60 @@ const Home = () => {
             {/* Chef section */}
             <section className='my-10 lg:my-14 flex items-center justify-center'>
                 <div>
-                <h1 className='text-center font-bold text-2xl lg:text-3xl text-secondary'>Meet Our Awesome Chefs.</h1>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4 gap-10 mt-10 items-center justify-center'>
-                    {
-                        allChef.map(singleChef => <AllChefs
-                            key={singleChef.id}
-                            singleChef={singleChef}
-                        ></AllChefs>)
-                    }
-                </div>
+                    <h1 className='text-center font-bold text-2xl lg:text-3xl text-secondary'>Meet Our Awesome Chefs.</h1>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4 gap-10 mt-10 items-center justify-center'>
+                        {
+                            allChef.map(singleChef => <AllChefs
+                                key={singleChef.id}
+                                singleChef={singleChef}
+                            ></AllChefs>)
+                        }
+                    </div>
                 </div>
             </section>
 
+            {/* explore recipe */}
+            <div className=' font-bold text-xl text-center pt-5 lg:text-3xl text-secondary'>
+                <h1>Explore More Recipe</h1>
+            </div>
+            <section className='my-10 lg:my-14 flex items-center justify-center'>
+                <img src="https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1192&q=80" alt="" className='w-3/4 rounded-xl' />
+
+                <div className='absolute bg-black bg-opacity-70 recipe-img rounded-lg p-3 lg:px-10 w-2/4'>
+                    <div className='flex flex-col items-center justify-center'>
+                        <h1 className='text-base lg:text-3xl text-center font-bold text-secondary'>Curiosity Never Tasted So Good - Let Your Palate Explore the Art of Fine Dining!</h1>
+
+                        <Link to="/" className='myBtn mt-0 lg:mt-3'>Explore More</Link>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* Get In touch */}
+            <section className='my-8 flex  items-center justify-center'>
+                <div>
+                    <div className=' font-bold text-xl text-center pt-5 lg:text-3xl text-secondary'>
+                        <h1>Get In Touch</h1>
+                    </div>
+                    <div className='flex items-center justify-center gap-10 flex-col lg:flex-row'>
+                        <form className='flex flex-col' >
+                            <label className='text-neutral text-lg mt-2 mb-1'>Email:</label>
+                            <input type="email" name='email' placeholder="Enter email" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
+
+                            <label className='text-neutral text-lg mt-3 mb-1'>Message:</label>
+
+                            <textarea type="text" placeholder="Type Your Suggestion" name='password' className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
+
+
+                            <button className='logOutBtn my-5'>Send Message</button>
+                        </form>
+
+                        <div className='w-11/12 lg:w-6/12'>
+                            <Lottie animationData={contactMotion} loop={true} className='w-full'/>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </main>
     );
