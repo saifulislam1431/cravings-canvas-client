@@ -16,7 +16,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ()=>fetch("https://cravings-canvas-server-saifulislam1431.vercel.app/all-chef")
             },
             {
                 path: "/blog",
