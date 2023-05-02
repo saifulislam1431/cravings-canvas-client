@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+    const[type , setType] = useState("password");
+    const [IsShow , setIsShow] = useState(false);
+
+    const handleShow =()=>{
+        setType("text")
+    }
+
+    const handleHide =()=>{
+        setType("password")
+    }
     return (
         <section className='flex items-center justify-center my-10 lg:my-20'>
             <div className='flex flex-col'>
@@ -25,7 +36,14 @@ const Register = () => {
                 <input type="email" placeholder="Enter email" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required/>
 
                 <label className='text-neutral text-lg mt-3 mb-1'>Password:</label>
-                <input type="password" placeholder="Enter password" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required/>
+                <div className='inline-flex items-center'>
+                <input type={type} placeholder="Enter password" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required/>
+                <div className='relative right-8 cursor-pointer' onClick={()=>setIsShow(!IsShow)}>
+                {
+                    IsShow ? <FaEyeSlash className='h-5 w-5 text-warning'  onClick={handleHide}/> : <FaEye className='h-5 w-5 text-warning' onClick={handleShow}/>
+                }
+                </div>
+                </div>
 
                 <label className='text-neutral text-lg mt-3 mb-1'>Confirm Password:</label>
                 <input type="password" placeholder="Re enter password" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required/>
@@ -34,7 +52,7 @@ const Register = () => {
                </form>
 
 
-                <p className='my-3 font-medium'>Already have an account? <Link to="/register" className='cursor-pointer text-secondary underline'>Sign In</Link></p>
+                <p className='my-3 font-medium'>Already have an account? <Link to="/login" className='cursor-pointer text-secondary underline'>Sign In</Link></p>
               
             </div>
 
