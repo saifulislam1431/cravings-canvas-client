@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { UserContext } from '../../../AuthProviders/AuthProvider';
 
 const Header = () => {
+
+    const { user } = useContext(UserContext)
     return (
         <nav className='myContainer'>
             <div className="flex justify-between items-center  bg-base-100">
                 <div className=" flex-grow lg:flex-grow-0">
-                    <div className="dropdown">
+                    <div className="dropdown w-full">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
@@ -23,13 +26,13 @@ const Header = () => {
                             <li className='font-medium'>
                                 <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : 'default')}>About</NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-32 rounded-full">
+                                    <div className="w-full rounded-full">
                                         <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                                     </div>
                                 </label>
-                            </li>
+                            </li> */}
                         </ul>
 
                     </div>
@@ -58,12 +61,16 @@ const Header = () => {
                     </ul>
                 </div>
 
-                <div className=" hidden lg:flex">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
+                <div className='ml-14 lg:ml-0'>
+                    {
+                        user ?
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </label> : 
+                            <button className='myBtn'>Login</button>
+                    }
 
                 </div>
             </div>
