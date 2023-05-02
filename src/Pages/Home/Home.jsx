@@ -1,14 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { UserContext } from '../../AuthProviders/AuthProvider';
 import { Link, useLoaderData } from 'react-router-dom';
 import AllChefs from '../AllChefs/AllChefs';
 import "./Home.css"
 import Lottie from "lottie-react";
 import contactMotion from "../../assets/96060-tta-contact-us.json"
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 
 const Home = () => {
+    const form = useRef();
     const allChef = useLoaderData();
     console.log(allChef);
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(import.meta.env.VITE_serviceId, import.meta.env.VITE_templateId , form.current, import.meta.env.VITE_publicKey)
+            .then((result) => {
+                toast.success("Thanks for suggestion!", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                e.target.reset();
+              
+            }, (error) => {
+                toast.error(error.text, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                
+            });
+    };
+
 
     return (
         <main className='myContainer my-8 lg:my-14'>
@@ -96,20 +132,23 @@ const Home = () => {
                         <h1>Get In Touch</h1>
                     </div>
                     <div className='flex items-center justify-center gap-10 flex-col lg:flex-row'>
-                        <form className='flex flex-col' >
+                        <form className='flex flex-col' onSubmit={sendEmail} ref={form}>
+                            <label className='text-neutral text-lg mt-2 mb-1'>Name:</label>
+                            <input type="text" name="user_name" placeholder="Enter Name" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
                             <label className='text-neutral text-lg mt-2 mb-1'>Email:</label>
-                            <input type="email" name='email' placeholder="Enter email" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
+                            <input type="email" name="user_email"
+                            placeholder="Enter email" className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
 
                             <label className='text-neutral text-lg mt-3 mb-1'>Message:</label>
 
-                            <textarea type="text" placeholder="Type Your Suggestion" name='password' className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
+                            <textarea type="text" placeholder="Type Your Suggestion" name="message"className='py-2 px-4 w-full lg:w-96 rounded-md placeholder:text-xs placeholder:tracking-wide bg-accent bg-opacity-10 focus:bg-opacity-30 outline-none' required />
 
 
                             <button className='logOutBtn my-5'>Send Message</button>
                         </form>
 
                         <div className='w-11/12 lg:w-6/12'>
-                            <Lottie animationData={contactMotion} loop={true} className='w-full'/>
+                            <Lottie animationData={contactMotion} loop={true} className='w-full' />
                         </div>
                     </div>
                 </div>
