@@ -1,14 +1,20 @@
 import React, { useContext, useRef } from 'react';
 import { UserContext } from '../../AuthProviders/AuthProvider';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import AllChefs from '../AllChefs/AllChefs';
 import "./Home.css"
 import Lottie from "lottie-react";
 import contactMotion from "../../assets/96060-tta-contact-us.json"
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
+
 
 const Home = () => {
+    const navigation = useNavigation();
+    if(navigation.state === "loading"){
+        return <Loading></Loading>
+    }
     const form = useRef();
     const allChef = useLoaderData();
     // console.log(allChef);

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigation, useParams } from 'react-router-dom';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import { FaHeart } from 'react-icons/fa';
 
 const ChefRecipes = () => {
+    const navigation = useNavigation();
+    if(navigation.state === "loading"){
+        return <Loading></Loading>
+    }
     const id = useParams()
     const allRecipes = useLoaderData();
     const [chef, setChef] = useState({});

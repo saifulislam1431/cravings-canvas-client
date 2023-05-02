@@ -53,7 +53,8 @@ const AuthProvider = ({ children }) => {
         googleSignIn,
         githubSignIn,
         logOut,
-        resetPass
+        resetPass,
+        loading
     }
 
     return (

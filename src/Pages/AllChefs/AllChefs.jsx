@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const AllChefs = ({ singleChef }) => {
     // console.log(singleChef);
@@ -8,7 +9,9 @@ const AllChefs = ({ singleChef }) => {
     return (
         <section>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={chefPicture} alt="Shoes" className='h-96 w-full' /></figure>
+                <LazyLoad  threshold={0.95}>
+                <figure><img src={chefPicture} alt="Shoes" className='h-96 w-full rounded-t-2xl' /></figure>
+                </LazyLoad>
                 <div className="card-body">
                     <h2 className="card-title">{chefName}</h2>
                     <p className='font-semibold text-lg'><span className='text-primary'>{yearsOfExperience}+</span> years of experience</p>
