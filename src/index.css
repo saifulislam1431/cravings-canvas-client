@@ -7,3 +7,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.myContainer{
+    @apply px-5 lg:px-10 2xl:px-14 py-2
+}
+.active{
+    @apply font-semibold text-primary bg-transparent
+}
+.default{
+    @apply text-neutral bg-transparent
+}

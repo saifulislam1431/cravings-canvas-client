@@ -9,17 +9,17 @@ export default {
       {
         mytheme: {
         
-"primary": "#7e3cc1",
+"primary": "#91972a",
         
-"secondary": "#fce580",
+"secondary": "#b6c454",
         
-"accent": "#becef7",
+"accent": "#d8d174",
         
 "neutral": "#2D2839",
         
-"base-100": "#F4F2F8",
+"base-100": "#f2f4f3",
         
-"info": "#789ADE",
+"info": "#e6d3a3",
         
 "success": "#209283",
         
