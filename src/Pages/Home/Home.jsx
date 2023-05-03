@@ -8,6 +8,9 @@ import contactMotion from "../../assets/96060-tta-contact-us.json"
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import Loading from '../Loading/Loading';
+import banner1 from "../../assets/img/banner1.jpg";
+import banner2 from "../../assets/img/banner2.jpg";
+import banner3 from "../../assets/img/banner3.jpg";
 
 
 const Home = () => {
@@ -59,7 +62,7 @@ const Home = () => {
                 <div className='banner'>
                     <div className="carousel w-full">
                         <div id="slide1" className="carousel-item relative w-full">
-                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" className="w-full rounded-3xl" />
+                            <img src={banner1} className="w-full rounded-3xl" />
 
                             <div className='absolute flex bg-black bg-opacity-30 rounded-3xl w-full h-full justify-center items-center px-20 text-center'>
                                 <h1 className='text-white font-bold text-xl lg:text-4xl'>Savor the Flavors of <span className="normal-case text-2xl font-extrabold" style={{ fontFamily: ['Great Vibes', 'cursive'] }}>Cravings & Canvas</span>  Experience Fine Dining Like Never Before!</h1>
@@ -72,7 +75,7 @@ const Home = () => {
                         </div>
                         <div id="slide2" className="carousel-item relative w-full">
 
-                            <img src="https://images.unsplash.com/photo-1543992321-cefacfc2322e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80" className="w-full rounded-3xl" />
+                            <img src={banner2} className="w-full rounded-3xl" />
                             <div className='absolute flex bg-black bg-opacity-30 rounded-3xl w-full h-full justify-center items-center px-20 text-center'>
                                 <h1 className='text-white font-bold text-xl lg:text-4xl'>Indulge in the Best Cuisine in <span className="normal-case text-2xl font-extrabold" style={{ fontFamily: ['Great Vibes', 'cursive'] }}>Cravings & Canvas</span>  A Culinary Adventure Awaits!</h1>
                             </div>
@@ -82,7 +85,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div id="slide3" className="carousel-item relative w-full">
-                            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" className="w-full rounded-3xl" />
+                            <img src={banner3} className="w-full rounded-3xl" />
 
 
                             <div className='absolute flex bg-black bg-opacity-30 rounded-3xl w-full h-full justify-center items-center px-20 text-center'>
