@@ -37,7 +37,7 @@
 - Express Js
 - HTML5
 - Tailwind CSS
-- Daisy using
+- Daisy UI
 - React Lottie
 - Email Js
 - React PDF
