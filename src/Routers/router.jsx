@@ -9,6 +9,7 @@ import Blog from '../Pages/Blog/Blog';
 import About from '../Pages/About/About';
 import ChefRecipes from '../Pages/ChefRecipes/ChefRecipes';
 import PrivateRoute from './PrivateRoute';
+import RecipeDetails from '../Pages/RecipeDetails/RecipeDetails';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
                 </PrivateRoute>,
                 loader: ({params})=>fetch(`https://cravings-canvas-server-saifulislam1431.vercel.app/recipe-by-chef-id/${params.id}`)
             },
+            {
+                path:"/recipeDetails/:id",
+                element: <RecipeDetails></RecipeDetails>,
+                loader: ({params})=>fetch(`https://cravings-canvas-server-saifulislam1431.vercel.app/recipe-by-id/${params.id}`)
+            }
          
         ]
     }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData, useNavigation, useParams } from 'react-router-dom';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import { FaHeart } from 'react-icons/fa';
+import Loading from '../Loading/Loading';
 
 const ChefRecipes = () => {
     const navigation = useNavigation();

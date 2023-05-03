@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const RecipeCard = ({ recipe }) => {
     const [liked, setLiked] = useState(false);
 
-    const { cookingMethod, ingredients, rating, recipeName, recipeImg, chefId } = recipe
+    const { cookingMethod, ingredients, rating, recipeName, recipeImg, chefId,id } = recipe
 
 
     const handleLikeBtn = () => {
@@ -52,14 +53,14 @@ const RecipeCard = ({ recipe }) => {
                                             ingredients.slice(0, 5).map(ingredient => <li>{ingredient}</li>)
                                         }
                                     </div>
-                                    <p className='text-primary font-semibold'>...Show More</p>
+                                    <Link to={`/recipeDetails/${id}`}className='text-primary font-semibold'>...Show More</Link>
                                 </div>
                             </div>
                             <div>
                                 <p className='mt-4 text-secondary font-semibold'>Cooking Method</p>
                                 {
                                     cookingMethod.slice(0, 50)
-                                } <span className='text-primary font-semibold'>...Read More</span>
+                                } <Link to={`/recipeDetails/${id}`}className='text-primary font-semibold'>...Read More</Link>
 
                             </div>
                         </div>
