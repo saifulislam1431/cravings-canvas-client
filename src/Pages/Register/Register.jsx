@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../AuthProviders/AuthProvider';
 import { toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
@@ -11,6 +11,9 @@ const Register = () => {
     const[error, setError] = useState("")
     const {newUser} = useContext(UserContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+    const from = location.state?.from?.pathname || '/'; 
 
     const handleShow =()=>{
         setType("text")
@@ -35,15 +38,16 @@ const Register = () => {
         else if(password.length < 6){
             return setError("Your password should be minimum six in length")
         }
-        else if(!/(?=.*?[0-9])/.test(password)){
-            return setError("Your password should be contain at least one digit")
-        }
-        else if(!/(?=.*?[#?!@$%^&*-])/.test(password)){
-            return setError("Your password should be contain at least one special character")
-        }
+        // else if(!/(?=.*?[0-9])/.test(password)){
+        //     return setError("Your password should be contain at least one digit")
+        // }
+        // else if(!/(?=.*?[#?!@$%^&*-])/.test(password)){
+        //     return setError("Your password should be contain at least one special character")
+        // }
         newUser(email , password)
         .then(res=>{
             const loggedUser = res.user;
+            navigate(from , {replace : true});
             toast.success('Registration Successful!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -56,7 +60,6 @@ const Register = () => {
                 });
                 setError("")
                 form.reset();
-                navigate("/");
                 updateProfile(loggedUser , {
                     displayName: name , photoURL: photo
                 }).then(()=>console.log("Update")).catch((error)=>console.log(error.message))

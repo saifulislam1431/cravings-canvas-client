@@ -9,7 +9,7 @@ const AllChefs = ({ singleChef }) => {
     return (
         <section>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <LazyLoad  threshold={0.95}>
+                <LazyLoad className='h-96 w-full'  threshold={0.95}>
                 <figure><img src={chefPicture} alt="Shoes" className='h-96 w-full rounded-t-2xl' /></figure>
                 </LazyLoad>
                 <div className="card-body">
