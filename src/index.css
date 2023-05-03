@@ -28,3 +28,11 @@
 .circleBtn{
     @apply px-5 py-3 flex items-center bg-secondary border border-secondary hover:bg-accent hover:border-accent text-white font-medium capitalize rounded-full
 }
+
+.circleBtnSec{
+    @apply px-4 py-4 flex items-center bg-red-500 border border-red-500 text-white rounded-full 
+}
+
+.circleBtnSecDis{
+    @apply px-4 py-4 flex items-center bg-red-300 border border-red-300  rounded-full text-red-700
+}

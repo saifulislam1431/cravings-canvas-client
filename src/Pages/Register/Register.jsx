@@ -60,7 +60,7 @@ const Register = () => {
                 updateProfile(loggedUser , {
                     displayName: name , photoURL: photo
                 }).then(()=>console.log("Update")).catch((error)=>console.log(error.message))
-
+console.log(loggedUser);
         })
         .catch((error)=>{
             toast.error(error.message, {

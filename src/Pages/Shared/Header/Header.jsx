@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../../../AuthProviders/AuthProvider';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import userDp from "../../../assets/icons/user.png"
 
 const Header = () => {
     const { user , logOut } = useContext(UserContext);
@@ -109,7 +110,7 @@ const Header = () => {
                         user ?
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img src={`${user.photoUrl ? user.photoUrl : "/images/stock/photo-1534528741775-53994a69daeb.jpg"}`} />
+                                    <img src={`${user.photoURL ? user.photoURL : userDp}`} />
                                 </div>
 
 

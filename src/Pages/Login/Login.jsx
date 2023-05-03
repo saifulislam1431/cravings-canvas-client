@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { UserContext } from '../../AuthProviders/AuthProvider';
 import { toast } from 'react-toastify';
@@ -12,8 +12,11 @@ const Login = () => {
         resetPass } = useContext(UserContext);
     const [type, setType] = useState("password");
     const [IsShow, setIsShow] = useState(false);
+    const location = useLocation();
     const navigate = useNavigate();
     const emailRef = useRef();
+    const from = location.state?.from?.pathname || '/'; 
+   
 
 
     const handleShow = () => {
@@ -35,6 +38,7 @@ const Login = () => {
         signUser(email, password)
             .then(res => {
                 const loggedUser = res.user;
+                navigate(from , {replace:true});
                 toast.success('Login Successful!', {
                     position: "top-center",
                     autoClose: 5000,
@@ -46,9 +50,7 @@ const Login = () => {
                     theme: "dark",
                 });
                 form.reset();
-                navigate("/");
-
-
+                
             })
             .catch((error) => {
                 toast.error(error.message, {
@@ -68,6 +70,7 @@ const Login = () => {
         googleSignIn()
             .then(res => {
                 const loggedUser = res.user;
+                navigate(from , {replace:true});
                 toast.success('Login Successful!', {
                     position: "top-center",
                     autoClose: 5000,
@@ -78,7 +81,6 @@ const Login = () => {
                     progress: undefined,
                     theme: "dark",
                 });
-                navigate("/");
 
             })
             .catch((error) => {
@@ -99,6 +101,7 @@ const Login = () => {
         githubSignIn()
             .then(res => {
                 const loggedUser = res.user;
+                navigate(from , {replace:true});
                 toast.success('Login Successful!', {
                     position: "top-center",
                     autoClose: 5000,
@@ -109,9 +112,6 @@ const Login = () => {
                     progress: undefined,
                     theme: "dark",
                 });
-                navigate("/");
-
-
             })
             .catch((error) => {
                 toast.error(error.message, {
