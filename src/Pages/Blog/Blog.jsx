@@ -12,6 +12,7 @@ const Blog = () => {
       <div>
         <div className='mt-10 mb-5 text-center'>
           <Link to="/" className="normal-case text-2xl font-extrabold" style={{ fontFamily: ['Great Vibes', 'cursive'] }}>Cravings & Canvas</Link>
+          <h1 className="capitalize text-5xl font-bold mt-3" style={{ fontFamily: ['Bebas Neue', 'cursive'] }}>Blogs</h1>
         </div>
         <div className='blog-content' ref={ref}>
           <div className="card w-full bg-accent bg-opacity-20 text-primary-content">
