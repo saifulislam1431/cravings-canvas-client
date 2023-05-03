@@ -49,7 +49,7 @@ const ChefRecipes = () => {
                     </div>
                 </div>
                 <div>
-                    <div className='my-10'>
+                    <div className='my-10 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-10  px-4'>
                         {
                             allRecipes.map(recipe => <RecipeCard
                                 key={recipe.id}
