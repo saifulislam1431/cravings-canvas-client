@@ -20,10 +20,6 @@ const ChefRecipes = () => {
     }, [])
     const { chefName, chefPicture, likes, numberOfRecipes, yearsOfExperience, bio } = chef
 
-    // console.log(chef);
-    // const chef = useLoaderData();
-    // console.log(chef);
-    // console.log(allRecipes);
     return (
         <section className='myContainer flex items-center justify-center'>
 
